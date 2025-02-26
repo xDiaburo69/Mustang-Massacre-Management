@@ -56,7 +56,7 @@ function renderTable(horses) {
                 price: horse.price,
                 is_alive: horse.is_alive,
             };
-
+            
             localStorage.setItem('editHorse', JSON.stringify(horseData));
             window.location.href = `http://127.0.0.1:5500/dashboard/edit/edit.html?id=${horse.id}`;
         });
@@ -79,10 +79,8 @@ function renderTable(horses) {
             })
             .then(response => {
                 if (!response.ok) throw new Error("Deletion error");
-
-                console.log(`Horse with ID ${horse.id} was deleted.`);
-
-                renderTable(updatedHorseData);
+                    console.log(`Horse with ID ${horse.id} was deleted.`);
+                    renderTable(updatedHorseData);
             })
             .catch(error => {
                 console.error("Error:", error);
@@ -92,7 +90,6 @@ function renderTable(horses) {
 
         deleteButtonCell.appendChild(deleteButton);
         row.appendChild(deleteButtonCell);
-
         horsesTable.appendChild(row);
     });
 }
