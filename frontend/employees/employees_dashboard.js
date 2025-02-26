@@ -1,15 +1,15 @@
-fetchHorseList();
+fetchEmployeeList();
 
-function fetchHorseList() {
-    console.log("Hello");
+function fetchEmployeeList() {
+    console.log('hello');
     const accessToken = localStorage.getItem("access");
 
     if (!accessToken) {
         console.error("No access token found! User is not logged in.");
         return;
     }
-    
-    fetch("http://127.0.0.1:8000/api/horses/", {
+
+    fetch("http://127.0.0.1:8000/api/employees", {
         method: "GET",
         headers: {
             "Content-Type": "application/json",
@@ -17,47 +17,44 @@ function fetchHorseList() {
         },
         credentials: "include"
     })
-    .then(response => response.json())
+    .then(Response => Response.json())
     .then(data => {
-        console.log(data);
         renderTable(data);
     })
-    .catch(error => console.error("Error loading the horses:", error));
+    .catch(error => console.error("Error loading the employees:", error));
 }
 
-function renderTable(horses) {
-    let horsesTable = document.getElementById("table-body");
-    horsesTable.innerHTML = "";
+function renderTable(employees) {
+    let employeesTable = document.getElementById("table-body");
+    employeesTable.innerHTML = "";
 
-    horses.forEach(horse => {
+    employees.forEach(employee => {
         let row = document.createElement("tr");
         row.innerHTML = `
-            <td>${horse.name}</td>
-            <td>${horse.age}</td>
-            <td>${horse.breed}</td>
-            <td>${horse.color}</td>
-            <td>${horse.price}</td>
-            <td>${horse.is_alive}</td>
+            <td>${employee.first_name}</td>
+            <td>${employee.last_name}</td>
+            <td>${employee.age}</td>
+            <td>${employee.position}</td>
+            <td>${employee.is_active}</td>
         `;
 
         const editButtonCell = document.createElement('td');
         const editButton = document.createElement('button');
-        editButton.textContent = 'Edit';
+        editButton.textContent = "Edit";
         editButton.classList.add('edit-button');
 
         editButton.addEventListener('click', () => {
-            const horseData = {
-                id: horse.id,
-                name: horse.name,
-                age: horse.age,
-                breed: horse.breed,
-                color: horse.color,
-                price: horse.price,
-                is_alive: horse.is_alive,
+            const employeeData = {
+                id: employee.id,
+                first_name: employee.first_name,
+                last_name: employee.last_name,
+                age: employee.age,
+                position: employee.position,
+                is_active: employee.is_active,
             };
-            
-            localStorage.setItem('editHorse', JSON.stringify(horseData));
-            window.location.href = `http://127.0.0.1:5500/dashboard/edit/edit.html?id=${horse.id}`;
+
+            localStorage.setItem('editEmployee', JSON.stringify(employeeData));
+            window.location.href = `http://127.0.0.1:5500/dashboard/edit/edit.html?id=${employee.id}`;
         });
 
         editButtonCell.appendChild(editButton);
@@ -70,16 +67,17 @@ function renderTable(horses) {
         deleteButton.style.backgroundColor = 'red';
 
         deleteButton.addEventListener('click', () => {
-            fetch(`http://127.0.0.1:8000/api/horses/${horse.id}/`, {
+            fetch(`http://127.0.0.1:8000/api/employees/${employee.is}`, {
                 method: "DELETE",
-                headers: {
+                headers: { 
                     "Authorization": `Bearer ${accessToken}`,
                 }
             })
             .then(response => {
                 if (!response.ok) throw new Error("Deletion error");
-                    console.log(`Horse with ID ${horse.id} was deleted.`);
-                    renderTable(updatedHorseData);
+
+                console.log(`Employee with ID ${employee.id} was deleted.`);
+                renderTable(updatedEmployeeData);
             })
             .catch(error => {
                 console.error("Error:", error);
@@ -89,6 +87,7 @@ function renderTable(horses) {
 
         deleteButtonCell.appendChild(deleteButton);
         row.appendChild(deleteButtonCell);
-        horsesTable.appendChild(row);
+
+        employeesTable.appendChild(row);
     });
 }

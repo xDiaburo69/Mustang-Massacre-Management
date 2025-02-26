@@ -1,15 +1,14 @@
-fetchHorseList();
+fetchProductsList();
 
-function fetchHorseList() {
-    console.log("Hello");
+function fetchProductsList() {
     const accessToken = localStorage.getItem("access");
 
     if (!accessToken) {
         console.error("No access token found! User is not logged in.");
         return;
     }
-    
-    fetch("http://127.0.0.1:8000/api/horses/", {
+
+    fetch("http://127.0.0.1:8000/api/products", {
         method: "GET",
         headers: {
             "Content-Type": "application/json",
@@ -19,25 +18,23 @@ function fetchHorseList() {
     })
     .then(response => response.json())
     .then(data => {
-        console.log(data);
         renderTable(data);
     })
-    .catch(error => console.error("Error loading the horses:", error));
+    .catch(error => console.error("Error loading the products:", error));
 }
 
-function renderTable(horses) {
-    let horsesTable = document.getElementById("table-body");
-    horsesTable.innerHTML = "";
+function renderTable(products) {
+    let productsTable = document.getElementById("table-body");
+    productsTable.innerHTML = "";
 
-    horses.forEach(horse => {
+    products.forEach(product => {
         let row = document.createElement("tr");
         row.innerHTML = `
-            <td>${horse.name}</td>
-            <td>${horse.age}</td>
-            <td>${horse.breed}</td>
-            <td>${horse.color}</td>
-            <td>${horse.price}</td>
-            <td>${horse.is_alive}</td>
+            <td>${product.id}</td>
+            <td>${product.name}</td>
+            <td>${product.price}</td>
+            <td>${product.sort}</td>
+            <td>${product.stock}</td>
         `;
 
         const editButtonCell = document.createElement('td');
@@ -46,18 +43,16 @@ function renderTable(horses) {
         editButton.classList.add('edit-button');
 
         editButton.addEventListener('click', () => {
-            const horseData = {
-                id: horse.id,
-                name: horse.name,
-                age: horse.age,
-                breed: horse.breed,
-                color: horse.color,
-                price: horse.price,
-                is_alive: horse.is_alive,
+            const productData = {
+                id: product.id,
+                name: product.name,
+                price: product.price,
+                sort: product.sort,
+                stock: product.stock,
             };
-            
-            localStorage.setItem('editHorse', JSON.stringify(horseData));
-            window.location.href = `http://127.0.0.1:5500/dashboard/edit/edit.html?id=${horse.id}`;
+
+            localStorage.setItem('editProduct', JSON.stringify(productData));
+            window.location.href = `http://127.0.0.1:5500/dashboard/edit/edit.html?id=${product.id}`
         });
 
         editButtonCell.appendChild(editButton);
@@ -72,14 +67,14 @@ function renderTable(horses) {
         deleteButton.addEventListener('click', () => {
             fetch(`http://127.0.0.1:8000/api/horses/${horse.id}/`, {
                 method: "DELETE",
-                headers: {
+                headers: { 
                     "Authorization": `Bearer ${accessToken}`,
                 }
             })
             .then(response => {
-                if (!response.ok) throw new Error("Deletion error");
-                    console.log(`Horse with ID ${horse.id} was deleted.`);
-                    renderTable(updatedHorseData);
+                if (!response.ok) throw new Error(`Deletion error`);
+                    console.log(`Employee with ID ${product.id} was deleted.`);
+                    renderTable(updatedProductData)
             })
             .catch(error => {
                 console.error("Error:", error);
@@ -89,6 +84,6 @@ function renderTable(horses) {
 
         deleteButtonCell.appendChild(deleteButton);
         row.appendChild(deleteButtonCell);
-        horsesTable.appendChild(row);
+        productsTable.appendChild(row);
     });
 }

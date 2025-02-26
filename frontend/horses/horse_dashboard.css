@@ -41,20 +41,3 @@ tr:nth-child(even){
     background-color:rgb(226, 177, 139);
 }
 
-.horse-container {
-    display: grid;
-    grid-template-columns: repeat(8, 1fr); /* 8 Spalten für die Daten + Buttons */
-    gap: 10px;
-    width: 100%;
-    padding: 10px;
-}
-
-.horse-container div {
-    padding: 5px;
-    border: 1px solid #ccc;
-}
-
-.horse-header {
-    font-weight: bold;
-    background-color: #f0f0f0;
-}
