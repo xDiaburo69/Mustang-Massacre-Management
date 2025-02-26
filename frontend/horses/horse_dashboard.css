@@ -44,8 +44,6 @@ td, th {
     
 }
 
-
-
 /* Hintergrund für ungerade Zeilen im tbody */
 tbody tr:nth-child(odd) {
 
