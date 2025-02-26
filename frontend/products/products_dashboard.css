@@ -8,8 +8,6 @@ body{
     
 }
 
-
-
 h1{
     text-align: center;
     background-color: rgb(62, 63, 63);
@@ -19,27 +17,42 @@ h1{
     color:rgb(234, 228, 228);
 }
 
-table{
+.table-container { /* Neuer Container */
     display: flex;
-    align-items: center;
     justify-content: center;
-    margin-top: 10rem;
-    max-width: 100%;
+    align-items: center;
+    margin-top: 2rem; /* Angepasstes Margin */
 }
 
+table{
+    border-radius: 10px;
+    width: 90%;
+    border-collapse: collapse;
+    overflow: hidden
+}
 
 thead{
     background-color:rgba(20, 14, 3, 0.7);
     color:#fff;
     font-size:1.2rem;
-    border-radius: 170px;
-    
+    border-radius: 10px 10px 0 0;
+    overflow: hidden;
 }
 
-td{
-    padding:1.2rem;
+td, th{
+    padding: 1rem;
+    text-align: left;
+    border-radius: 50px, 50px, 50px, 50px;
     
 }
-tr:nth-child(even){
-    background-color:rgb(226, 177, 139);
+tbody tr:nth-child(odd) {
+
+    background-color: rgba(68, 42, 22, 0.651);
+    color: rgb(255, 255, 255);
+}
+
+/* Hintergrund für gerade Zeilen im tbody */
+tbody tr:nth-child(even) {
+    background-color: rgba(226, 177, 139, 0.788);
+    color: #5a3d08;
 }
