@@ -1,4 +1,3 @@
-from django.shortcuts import render
 from rest_framework import generics
 from .models import Horses, Employees, Products
 from .serializers import HorsesSerializer, EmployeeSerializer, ProductsSerializer
@@ -32,7 +31,7 @@ class HorseListDetailView(generics.RetrieveUpdateDestroyAPIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
-class EmployeeListView(generics.ListAPIView):
+class EmployeeListView(generics.ListCreateAPIView):
     queryset = Employees.objects.all()
     serializer_class = EmployeeSerializer
     permission_classes = [AllowAny]
@@ -57,7 +56,7 @@ class EmployeeListDetailView(generics.RetrieveUpdateDestroyAPIView):
             return Response(serializer.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-class ProductListView(generics.ListAPIView):
+class ProductListView(generics.ListCreateAPIView):
     queryset = Products.objects.all()
     serializer_class = ProductsSerializer
     permission_classes = [AllowAny]

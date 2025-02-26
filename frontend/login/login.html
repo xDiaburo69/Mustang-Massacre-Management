@@ -8,18 +8,20 @@
 </head>
 <body>
     <div class="container">
-        <h1>Hallo!</h1>
-        <form class="login-form" action="#" method="post">
+        <h1>Hello!</h1>
+        <form class="login-form" onsubmit="return login();">
             <div class="input-group">
-                <label for="username">Benutzername</label>
+                <label for="username">Username</label>
                 <input type="text" id="username" name="username" required>
             </div>
             <div class="input-group">
-                <label for="password">Passwort</label>
+                <label for="password">Password</label>
                 <input type="password" id="password" name="password" required>
             </div>
-            <button type="submit">Einloggen</button>
+            <button type="submit">Login</button>
         </form>
     </div>
+
+    <script src="./login.js"></script>
 </body>
 </html>

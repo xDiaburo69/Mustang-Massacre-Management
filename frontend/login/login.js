@@ -4,24 +4,17 @@ function login() {
 
     fetch("http://localhost:8000/api/token/", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {"Content-Type": "application/json"},
         body: JSON.stringify({ username: USERNAME, password: PASSWORD }),
     })
-    .then((response) => {
-        console.log("Antwort-Status:", response.status); 
-
-        if (!response.ok) {
-            return response.json().then(err => { throw err });
-        }
-        return response.json();
-    })
+    .then((response) => response.json())
     .then((data) => {
         console.log("Server response:", data);
 
         if (data.access) {
             localStorage.setItem('access', data.access);
             localStorage.setItem('refresh', data.refresh);
-            window.location.href = './';
+            window.location.href = '../landingpage/landingpage.html';
         } else {
             console.warn("Login failed: No access token received.");
         }
