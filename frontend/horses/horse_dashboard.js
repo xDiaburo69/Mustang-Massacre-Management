@@ -42,8 +42,9 @@ function renderTable(horses) {
 
         const editButtonCell = document.createElement('td');
         const editButton = document.createElement('button');
-        editButton.textContent = 'Edit';
-        editButton.classList.add('edit-button');
+        editButton.textContent = 'Edit'; /* gibt dem button einen text*/
+        editButton.classList.add('edit-button');/* gibt dem button eine klasse und fügt den button ein*/
+        editButton.style.backgroundColor = 'rgb(185, 94, 32)'; /* gibt den button eine andere farbe*/
 
         editButton.addEventListener('click', () => {
             const horseData = {
@@ -67,7 +68,7 @@ function renderTable(horses) {
         const deleteButton = document.createElement('button');
         deleteButton.textContent = 'Delete';
         deleteButton.classList.add('del-button');
-        deleteButton.style.backgroundColor = 'red';
+        deleteButton.style.backgroundColor = 'rgb(190, 0, 0)';
 
         deleteButton.addEventListener('click', () => {
             fetch(`http://127.0.0.1:8000/api/horses/${horse.id}/`, {
