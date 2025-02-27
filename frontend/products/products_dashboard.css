@@ -22,7 +22,7 @@ h1{
 }
 
 .btn-primary {
-    background-color: rgba(100, 51, 5, 0.603);
+    background-color: rgba(10, 7, 4, 0.603);
     color: white;
     padding: 10px 20px;
     
@@ -32,7 +32,7 @@ h1{
   }
   
   .btn-primary:hover {
-    background-color: rgba(54, 26, 25, 0.603);
+    background-color: rgba(156, 143, 142, 0.603);
   }
 
 .table-container { /* Neuer Container */
@@ -65,12 +65,12 @@ td, th{
 }
 tbody tr:nth-child(odd) {
 
-    background-color: rgba(68, 42, 22, 0.651);
+    background-color: rgba(10, 8, 6, 0.651);
     color: rgb(255, 255, 255);
 }
 
 /* Hintergrund für gerade Zeilen im tbody */
 tbody tr:nth-child(even) {
-    background-color: rgba(226, 177, 139, 0.788);
+    background-color: rgba(221, 215, 210, 0.788);
     color: #5a3d08;
 }
