@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-    console.log("test");
     const pageContainer = document.querySelector('.table-container');
     const addButton = document.createElement('button');
     addButton.textContent = "Add";

@@ -1,4 +1,17 @@
-fetchEmployeeList();
+document.addEventListener('DOMContentLoaded', () => {
+    const pageContainer = document.querySelector('.table-container');
+    const addButton = document.createElement('button');
+    addButton.textContent = "Add";
+    addButton.classList.add('add-button');
+    addButton.addEventListener('click', () => {
+        // Hier wird der aktuelle Table als Parameter in der URL übergeben.
+        window.location.href = "http://127.0.0.1:5501/frontend/edit/edit.html?table=products";
+    });
+    // Füge den Add Button oberhalb der Tabelle ein.
+    pageContainer.insertBefore(addButton, pageContainer.querySelector('table-container'));
+
+    fetchEmployeeList();
+});
 
 function fetchEmployeeList() {
     console.log('hello');
@@ -17,7 +30,7 @@ function fetchEmployeeList() {
         },
         credentials: "include"
     })
-    .then(Response => Response.json())
+    .then(Response => response.json())
     .then(data => {
         renderTable(data);
     })
