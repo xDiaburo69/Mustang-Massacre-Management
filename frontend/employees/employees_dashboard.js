@@ -91,3 +91,8 @@ function renderTable(employees) {
         employeesTable.appendChild(row);
     });
 }
+
+
+function add(){
+    window.location.href= '../edit/edit.html';
+  }
