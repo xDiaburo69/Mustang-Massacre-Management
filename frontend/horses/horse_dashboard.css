@@ -15,21 +15,21 @@ h1 {
     color: rgb(41, 31, 14);
 }
 
-.center-container {
-    text-align: center;
-}
 
-.btn-primary {
+
+
+.add-button {
     background-color: rgba(100, 51, 5, 0.603);
     color: white;
     padding: 10px 20px;
-    
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    display: block;
+    margin: 0 auto 10px auto;
   }
   
-  .btn-primary:hover {
+  .add-button:hover {
     background-color: rgba(54, 26, 25, 0.603);
   }
 
@@ -37,9 +37,9 @@ h1 {
 
 .table-container { /* Neuer Container */
     display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 2rem; /* Angepasstes Margin */
+    flex-direction: column;
+    margin: 20px auto 0 auto;
+    width: 80%; /* Angepasstes Margin */
 }
 
 table {

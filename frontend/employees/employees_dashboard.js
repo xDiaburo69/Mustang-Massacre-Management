@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
         window.location.href = "http://127.0.0.1:5501/frontend/edit/edit.html?table=employee";
     });
     // Füge den Add Button oberhalb der Tabelle ein.
-    pageContainer.insertBefore(addButton, pageContainer.querySelector('table-container'));
+    pageContainer.insertBefore(addButton, pageContainer.firstChild);
 
     fetchEmployeeList();
 });

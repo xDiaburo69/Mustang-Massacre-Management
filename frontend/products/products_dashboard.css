@@ -17,31 +17,29 @@ h1{
     color:rgb(234, 228, 228);
 }
 
-.center-container {
-    text-align: center;
-}
 
-.btn-primary {
+
+.add-button {
     background-color: rgba(10, 7, 4, 0.603);
     color: white;
     padding: 10px 20px;
-    
     border: none;
     border-radius: 5px;
     cursor: pointer;
-  }
-  
-  .btn-primary:hover {
-    background-color: rgba(156, 143, 142, 0.603);
-  }
-
-.table-container { /* Neuer Container */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 2rem; /* Angepasstes Margin */
+    display: block; /* Wichtig für margin: 0 auto; */
+    margin: 0 auto 10px auto; /* Zentriert horizontal und fügt Abstand nach unten hinzu */
 }
 
+.add-button:hover {
+    background-color: rgba(156, 143, 142, 0.603);
+}
+
+.table-container {
+    display: flex;
+    flex-direction: column; /* Stellt sicher, dass die Elemente untereinander angeordnet sind */
+    margin: 20px auto 0 auto; /* Fügt oberen Abstand hinzu und zentriert horizontal */
+    width: 80%; /* Optional: Begrenzt die Breite des Containers */
+}
 table{
     border-radius: 10px;
     width: 90%;
