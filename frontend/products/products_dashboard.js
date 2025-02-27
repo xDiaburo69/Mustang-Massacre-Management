@@ -87,3 +87,7 @@ function renderTable(products) {
         productsTable.appendChild(row);
     });
 }
+
+function add(){
+    window.location.href= '../edit/edit.html';
+  }

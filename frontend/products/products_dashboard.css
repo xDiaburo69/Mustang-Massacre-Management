@@ -17,6 +17,24 @@ h1{
     color:rgb(234, 228, 228);
 }
 
+.center-container {
+    text-align: center;
+}
+
+.btn-primary {
+    background-color: rgba(100, 51, 5, 0.603);
+    color: white;
+    padding: 10px 20px;
+    
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .btn-primary:hover {
+    background-color: rgba(54, 26, 25, 0.603);
+  }
+
 .table-container { /* Neuer Container */
     display: flex;
     justify-content: center;

@@ -93,3 +93,7 @@ function renderTable(horses) {
         horsesTable.appendChild(row);
     });
 }
+
+function add(){
+    window.location.href= '../edit/edit.html';
+  }
