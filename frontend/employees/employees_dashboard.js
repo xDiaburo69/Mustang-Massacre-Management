@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
     addButton.classList.add('add-button');
     addButton.addEventListener('click', () => {
         // Hier wird der aktuelle Table als Parameter in der URL übergeben.
-        window.location.href = "http://127.0.0.1:5501/frontend/edit/edit.html?table=products";
+        window.location.href = "http://127.0.0.1:5501/frontend/edit/edit.html?table=employee";
     });
     // Füge den Add Button oberhalb der Tabelle ein.
     pageContainer.insertBefore(addButton, pageContainer.querySelector('table-container'));
@@ -30,7 +30,7 @@ function fetchEmployeeList() {
         },
         credentials: "include"
     })
-    .then(Response => response.json())
+    .then(Response => Response.json())
     .then(data => {
         renderTable(data);
     })
@@ -48,7 +48,7 @@ function renderTable(employees) {
             <td>${employee.last_name}</td>
             <td>${employee.age}</td>
             <td>${employee.position}</td>
-            <td>${employee.is_active}</td>
+            <td>${employee.is_active ? "still feeling the whip" : "couldn't stand the whip"}</td>
         `;
 
         const editButtonCell = document.createElement('td');
@@ -67,7 +67,7 @@ function renderTable(employees) {
             };
 
             localStorage.setItem('editEmployee', JSON.stringify(employeeData));
-            window.location.href = `http://127.0.0.1:5500/dashboard/edit/edit.html?id=${employee.id}`;
+            window.location.href = `http://127.0.0.1:5501/frontend/edit/edit.html?table=employee&id=${employee.id}`;
         });
 
         editButtonCell.appendChild(editButton);

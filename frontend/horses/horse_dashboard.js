@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
     addButton.classList.add('add-button');
     addButton.addEventListener('click', () => {
         // Hier wird der aktuelle Table als Parameter in der URL übergeben.
-        window.location.href = "http://127.0.0.1:5501/frontend/edit/edit.html?table=products";
+        window.location.href = "http://127.0.0.1:5501/frontend/edit/edit.html?table=horses";
     });
     // Füge den Add Button oberhalb der Tabelle ein.
     pageContainer.insertBefore(addButton, pageContainer.querySelector('table-container'));
@@ -48,7 +48,7 @@ function renderTable(horses) {
             <td>${horse.breed}</td>
             <td>${horse.color}</td>
             <td>${horse.price}</td>
-            <td>${horse.is_alive}</td>
+            <td>${horse.is_alive ? "sausage soon" : "yummy sausage"}</td>
         `;
 
         const editButtonCell = document.createElement('td');
@@ -69,7 +69,7 @@ function renderTable(horses) {
             };
             
             localStorage.setItem('editHorse', JSON.stringify(horseData));
-            window.location.href = `http://127.0.0.1:5500/dashboard/edit/edit.html?id=${horse.id}`;
+            window.location.href = `http://127.0.0.1:5501/frontend/edit/edit.html?table=horses&id=${horse.id}`;
         });
 
         editButtonCell.appendChild(editButton);
