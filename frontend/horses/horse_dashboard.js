@@ -1,15 +1,27 @@
-fetchHorseList();
+document.addEventListener('DOMContentLoaded', () => {
+    const pageContainer = document.querySelector('.table-container');
+    const addButton = document.createElement('button');
+    addButton.textContent = "Add";
+    addButton.classList.add('add-button');
+    addButton.addEventListener('click', () => {
+        // Hier wird der aktuelle Table als Parameter in der URL übergeben.
+        window.location.href = "http://127.0.0.1:5501/frontend/edit/edit.html?table=products";
+    });
+    // Füge den Add Button oberhalb der Tabelle ein.
+    pageContainer.insertBefore(addButton, pageContainer.querySelector('table-container'));
+
+    fetchHorseList();
+});
 
 function fetchHorseList() {
-    console.log("Hello");
     const accessToken = localStorage.getItem("access");
 
     if (!accessToken) {
         console.error("No access token found! User is not logged in.");
         return;
     }
-    
-    fetch("http://127.0.0.1:8000/api/horses/", {
+
+    fetch("http://127.0.0.1:8000/api/horses", {
         method: "GET",
         headers: {
             "Content-Type": "application/json",
@@ -19,7 +31,6 @@ function fetchHorseList() {
     })
     .then(response => response.json())
     .then(data => {
-        console.log(data);
         renderTable(data);
     })
     .catch(error => console.error("Error loading the horses:", error));
@@ -93,7 +104,3 @@ function renderTable(horses) {
         horsesTable.appendChild(row);
     });
 }
-
-function add(){
-    window.location.href= '../edit/edit.html';
-  }
