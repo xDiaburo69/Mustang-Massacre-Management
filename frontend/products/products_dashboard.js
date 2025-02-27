@@ -1,6 +1,21 @@
-fetchProductsList();
+document.addEventListener('DOMContentLoaded', () => {
+    console.log("test");
+    const pageContainer = document.querySelector('.table-container');
+    const addButton = document.createElement('button');
+    addButton.textContent = "Add";
+    addButton.classList.add('add-button');
+    addButton.addEventListener('click', () => {
+        // Hier wird der aktuelle Table als Parameter in der URL übergeben.
+        window.location.href = "http://127.0.0.1:5501/frontend/edit/edit.html?table=products";
+    });
+    // Füge den Add Button oberhalb der Tabelle ein.
+    pageContainer.insertBefore(addButton, pageContainer.querySelector('table-container'));
+
+    fetchProductsList();
+});
 
 function fetchProductsList() {
+    console.log("test");
     const accessToken = localStorage.getItem("access");
 
     if (!accessToken) {
@@ -52,7 +67,7 @@ function renderTable(products) {
             };
 
             localStorage.setItem('editProduct', JSON.stringify(productData));
-            window.location.href = `http://127.0.0.1:5500/dashboard/edit/edit.html?id=${product.id}`
+            window.location.href = `http://127.0.0.1:5501/frontend/edit/edit.html?table=products&id=${product.id}`
         });
 
         editButtonCell.appendChild(editButton);
@@ -65,7 +80,7 @@ function renderTable(products) {
         deleteButton.style.backgroundColor = 'red';
 
         deleteButton.addEventListener('click', () => {
-            fetch(`http://127.0.0.1:8000/api/horses/${horse.id}/`, {
+            fetch(`http://127.0.0.1:8000/api/products/${horse.id}/`, {
                 method: "DELETE",
                 headers: { 
                     "Authorization": `Bearer ${accessToken}`,
@@ -73,7 +88,7 @@ function renderTable(products) {
             })
             .then(response => {
                 if (!response.ok) throw new Error(`Deletion error`);
-                    console.log(`Employee with ID ${product.id} was deleted.`);
+                    console.log(`Products with ID ${product.id} was deleted.`);
                     renderTable(updatedProductData)
             })
             .catch(error => {
@@ -87,7 +102,3 @@ function renderTable(products) {
         productsTable.appendChild(row);
     });
 }
-
-function add(){
-    window.location.href= '../edit/edit.html';
-  }
