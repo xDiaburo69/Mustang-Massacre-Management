@@ -1,0 +1,98 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    transition: background 0.5s ease-in-out;
+  }
+  
+  .edit-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    transition: background 0.5s ease-in-out;
+  }
+  
+  #formContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    width: 100%;
+  }
+  
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .form-group:hover {
+    transform: scale(1.05);
+  }
+  
+  /* Dynamische Styles basierend auf dem Parameter */
+  body[data-table="horses"] {
+    background-image:url(../../src/images/graveyard_horse.png) ;
+  }
+  
+  body[data-table="horses"] .edit-container {
+    background: rgba(255, 255, 255, 0.8);
+  }
+  
+  body[data-table="products"] {
+    background: linear-gradient(135deg, #a1c4fd, #c2e9fb);
+  }
+  
+  body[data-table="products"] .edit-container {
+    background: rgba(255, 255, 255, 0.8);
+  }
+  
+  body[data-table="employees"] {
+    background: linear-gradient(135deg, #d4fc79, #96e6a1);
+  }
+  
+  body[data-table="employees"] .edit-container {
+    background: rgba(255, 255, 255, 0.8);
+  }
+  
+ /* Standard-Button */
+#saveBtn {
+    margin-top: 30px;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: transform 0.2s, background-color 0.3s ease-in-out;
+  }
+  
+  /* Farben für verschiedene Kategorien */
+  body[data-table="employees"] #saveBtn {
+    background-color: #28a745; /* Grün für Employees */
+  }
+  
+  body[data-table="products"] #saveBtn {
+    background-color: #ffc107; /* Gelb für Products */
+  }
+  
+  body[data-table="horses"] #saveBtn {
+    background-color: #1a1a30; /* Orange für Horses */
+  }
+  
+  /* Hover-Effekt */
+  #saveBtn:hover {
+    transform: scale(1.1);
+    opacity: 0.9;
+  }
+  
