@@ -39,6 +39,7 @@ function fetchEmployeeList() {
 
 function renderTable(employees) {
     let employeesTable = document.getElementById("table-body");
+    const accessToken = localStorage.getItem("access");
     employeesTable.innerHTML = "";
 
     employees.forEach(employee => {
@@ -80,7 +81,7 @@ function renderTable(employees) {
         deleteButton.style.backgroundColor = 'red';
 
         deleteButton.addEventListener('click', () => {
-            fetch(`http://127.0.0.1:8000/api/employees/${employee.is}`, {
+            fetch(`http://127.0.0.1:8000/api/employees/${employee.id}`, {
                 method: "DELETE",
                 headers: { 
                     "Authorization": `Bearer ${accessToken}`,

@@ -36,6 +36,10 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost:5501",
 ]
 
+CSP_DEFAULT_SRC = ("'self'", "http://127.0.0.1:5501")
+CSP_SCRIPT_SRC = ("'self'", "http://127.0.0.1:5501", "blob:")
+
+
 # Application definition
 
 INSTALLED_APPS = [

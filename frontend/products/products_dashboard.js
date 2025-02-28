@@ -79,20 +79,21 @@ function renderTable(products) {
         deleteButton.style.backgroundColor = 'red';
 
         deleteButton.addEventListener('click', () => {
-            fetch(`http://127.0.0.1:8000/api/products/${horse.id}/`, {
+            fetch(`http://127.0.0.1:8000/api/products/${product.id}/`, {
                 method: "DELETE",
                 headers: { 
                     "Authorization": `Bearer ${accessToken}`,
                 }
             })
             .then(response => {
-                if (!response.ok) throw new Error(`Deletion error`);
+                if (!response.ok) throw new Error(`Deletion error: ${response.status} ${response.statusText}`);
                     console.log(`Products with ID ${product.id} was deleted.`);
-                    renderTable(updatedProductData)
+                    return response.text();
             })
+            .then(() => fetchProductsList())
             .catch(error => {
                 console.error("Error:", error);
-                alert("Delete failed!");
+                alert(`Delete failed! Error: ${error.message}`);
             });
         });
 
