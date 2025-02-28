@@ -109,9 +109,10 @@ function renderTable(horses) {
                 confirmButtonColor: "#dc3545",
                 cancelButtonColor: "#6c757d",
                 confirmButtonText: "Yes, delete it!"
-            }).then((result) => {
+            })
+            .then((result) => {
                 if (result.isConfirmed) {
-                    fetch(`http://127.0.0.1:8000/api/horses/${horse.id}`, {
+                    fetch(`http://127.0.0.1:8000/api/horses/${horse.id}/`, {
                         method: "DELETE",
                         headers: { 
                             "Authorization": `Bearer ${accessToken}`,
@@ -122,7 +123,7 @@ function renderTable(horses) {
                         if (!response.ok) throw new Error("Deletion failed");
         
                         Swal.fire("Deleted!", "The horse has been removed.", "success");
-                        fetchEmployeeList(); // Tabelle aktualisieren
+                        fetchHorseList();
                     })
                     .catch(error => {
                         console.error("Error:", error);
