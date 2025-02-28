@@ -32,7 +32,7 @@ body {
     align-items: center;
     padding: 15px;
     border-radius: 8px;
-    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 2px 2px 10px rgba(7, 1, 1, 0.822);
     transition: transform 0.3s ease-in-out;
   }
   
@@ -50,19 +50,19 @@ body {
   }
   
   body[data-table="products"] {
-    background: linear-gradient(135deg, #a1c4fd, #c2e9fb);
+    background-image: url(../../src/images/metzgerei.png);
   }
   
   body[data-table="products"] .edit-container {
     background: rgba(255, 255, 255, 0.8);
   }
   
-  body[data-table="employees"] {
-    background: linear-gradient(135deg, #d4fc79, #96e6a1);
+  body[data-table="employee"] {
+    background-image: url(../../src/images/36fd2fa6.png);
   }
   
-  body[data-table="employees"] .edit-container {
-    background: rgba(255, 255, 255, 0.8);
+  body[data-table="employee"] .edit-container {
+    background: rgba(129, 86, 51, 0.712);
   }
   
  /* Standard-Button */
@@ -70,7 +70,7 @@ body {
     margin-top: 30px;
     padding: 10px 20px;
     font-size: 16px;
-    color: white;
+    color: rgb(0, 0, 0);
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -83,7 +83,7 @@ body {
   }
   
   body[data-table="products"] #saveBtn {
-    background-color: #ffc107; /* Gelb für Products */
+    background-color: #5c609ec5; /* Gelb für Products */
   }
   
   body[data-table="horses"] #saveBtn {

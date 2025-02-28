@@ -19,23 +19,29 @@ h1{
     color:rgb(234, 228, 228);
 }
 
+.button-container {
+    display: flex;
+    justify-content: center; /* Zentriert die Buttons */
+    gap: 15px; /* Abstand zwischen den Buttons */
+    margin-bottom: 20px;
+}
 
-
-.add-button {
-    background-color: rgb(7, 4, 1);
-    color: white;
+.button-container button {
     padding: 10px 20px;
+    font-size: 16px;
+    color: white;
+    background-color: rgb(7, 4, 1);
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    display: block;
-    margin: 0 auto 10px auto;
-  }
-  
-  .add-button:hover {
+    transition: transform 0.2s, background-color 0.3s;
+}
+
+.button-container button:hover {
+    transform: scale(1.1);
     background-color: rgba(250, 250, 250, 0.603);
     color: rgb(5, 3, 1);
-  }
+}
 
 .table-container{
     display: flex;
