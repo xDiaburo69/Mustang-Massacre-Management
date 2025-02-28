@@ -1,3 +1,6 @@
+// Felder referenzieren
+const idField = document.getElementById("")
+
 document.addEventListener('DOMContentLoaded', function() {
     const urlParams = new URLSearchParams(window.location.search);
     const table = urlParams.get('table'); // z.B. employee, products, horses
@@ -34,7 +37,7 @@ document.addEventListener('DOMContentLoaded', function() {
           { label: "Age", type: "number", name: "age" },
           { label: "Color", type: "text", name: "color" },
           { label: "Price", type: "number", name: "price" },
-          { label: "Is Alive", type: "checkbox", name: "isAlive" }
+          { label: "Is Alive", type: "checkbox", name: "is_alive" }
         ],
         endpoint: "http://127.0.0.1:8000/api/horses/"
       }
@@ -80,6 +83,7 @@ document.addEventListener('DOMContentLoaded', function() {
   
     // Funktion zum Vorbefüllen des Formulars
     function prefillForm(data) {
+      console.log("prefillForm");
       formConfig.fields.forEach(field => {
         const element = document.getElementById(field.name);
         if (element) {
@@ -95,13 +99,13 @@ document.addEventListener('DOMContentLoaded', function() {
     // Im Bearbeitungsmodus Daten aus dem Backend holen
     if (isEditMode) {
       const fetchUrl = formConfig.endpoint + id + "/";
+      console.log(fetchUrl);
       fetch(fetchUrl, {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
             "Authorization": `Bearer ${accessToken}`
           },
-          credentials: "include"
         })
         .then(response => {
           if (!response.ok) throw new Error("Error fetching data");
@@ -116,7 +120,8 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   
     // Beim Klick auf "Speichern" werden die Daten an das Backend gesendet
-    document.getElementById('saveBtn').addEventListener('click', function() {
+    document.getElementById('saveBtn').addEventListener('click', function(e) {
+      e.preventDefault();
       const data = {};
       formConfig.fields.forEach(field => {
         const element = document.getElementById(field.name);
@@ -140,7 +145,6 @@ document.addEventListener('DOMContentLoaded', function() {
             "Content-Type": "application/json",
             "Authorization": `Bearer ${accessToken}`
           },
-          credentials: "include",
           body: JSON.stringify(data)
         })
         .then(response => {
@@ -149,6 +153,12 @@ document.addEventListener('DOMContentLoaded', function() {
         })
         .then(savedData => {
           console.log("Saved data:", savedData);
+          const dashboardMapping = {
+            horses: "/frontend/horses/horse_dashboard.html",
+            employees: "/frontend/employees/employees_dashboard.html",
+            products: "/frontend/products/products_dashboard.html"
+          };
+          window.location.href = dashboardMapping[table] || "/index.html";
         })
         .catch(error => {
           console.error("Error saving data:", error);
