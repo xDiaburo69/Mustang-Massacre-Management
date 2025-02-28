@@ -101,23 +101,36 @@ function renderTable(horses) {
         deleteButton.style.backgroundColor = 'rgb(190, 0, 0)';
 
         deleteButton.addEventListener('click', () => {
-            fetch(`http://127.0.0.1:8000/api/horses/${horse.id}/`, {
-                method: "DELETE",
-                headers: {
-                    "Authorization": `Bearer ${accessToken}`,
+            Swal.fire({
+                title: "Are you sure?",
+                text: `Do you really want to delete ${horse.name}?`,
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#dc3545",
+                cancelButtonColor: "#6c757d",
+                confirmButtonText: "Yes, delete it!"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    fetch(`http://127.0.0.1:8000/api/horses/${horse.id}`, {
+                        method: "DELETE",
+                        headers: { 
+                            "Authorization": `Bearer ${accessToken}`,
+                            "Content-Type": "application/json"
+                        }
+                    })
+                    .then(response => {
+                        if (!response.ok) throw new Error("Deletion failed");
+        
+                        Swal.fire("Deleted!", "The horse has been removed.", "success");
+                        fetchEmployeeList(); // Tabelle aktualisieren
+                    })
+                    .catch(error => {
+                        console.error("Error:", error);
+                        Swal.fire("Error", "Delete failed!", "error");
+                    });
                 }
-            })
-            .then(response => {
-                if (!response.ok) throw new Error("Deletion error");
-                    console.log(`Horse with ID ${horse.id} was deleted.`);
-                    renderTable(updatedHorseData);
-            })
-            .catch(error => {
-                console.error("Error:", error);
-                alert("Delete failed!");
             });
         });
-
         deleteButtonCell.appendChild(deleteButton);
         row.appendChild(deleteButtonCell);
 
