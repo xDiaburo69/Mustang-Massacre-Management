@@ -4,6 +4,7 @@ const idField = document.getElementById("")
 document.addEventListener('DOMContentLoaded', function() {
     const urlParams = new URLSearchParams(window.location.search);
     const table = urlParams.get('table'); // z.B. employee, products, horses
+    document.body.setAttribute("data-table", table);
     const id = urlParams.get('id'); // Wenn vorhanden, Bearbeitungsmodus
     const isEditMode = id !== null;
   
