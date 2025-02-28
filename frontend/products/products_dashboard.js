@@ -1,14 +1,36 @@
 document.addEventListener('DOMContentLoaded', () => {
     const pageContainer = document.querySelector('.table-container');
+
+
+    //Erzeugt ein Button Container, leichter fürs css
+    const buttonContainer = document.createElement('div'); //erzeugt ein div
+    buttonContainer.classList.add('button-container'); // klasse wird vergeben
+
+    //Erzeugt den Add Button
     const addButton = document.createElement('button');
-    addButton.textContent = "Add";
+    addButton.textContent = "Add"; //was im Button stehen soll
     addButton.classList.add('add-button');
+    // aktion wenn der Button geklickt wird
     addButton.addEventListener('click', () => {
         // Hier wird der aktuelle Table als Parameter in der URL übergeben.
         window.location.href = "http://127.0.0.1:5501/frontend/edit/edit.html?table=products";
     });
+
+
+    // Back-Button
+    const backButton = document.createElement('button');   
+    backButton.textContent = "Back to Landing Page";
+    backButton.classList.add('back-button');
+    backButton.addEventListener('click', () => {
+        window.location.href = "http://127.0.0.1:5501/frontend/landingpage/landingpage.html";
+    });
+    
+    buttonContainer.appendChild(addButton);
+    buttonContainer.appendChild(backButton);
+    
+    
     // Füge den Add Button oberhalb der Tabelle ein.
-    pageContainer.insertBefore(addButton, pageContainer.firstChild);
+    pageContainer.insertBefore(buttonContainer, pageContainer.firstChild);
 
     fetchProductsList();
 });

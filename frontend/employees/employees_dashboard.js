@@ -1,5 +1,12 @@
 document.addEventListener('DOMContentLoaded', () => {
     const pageContainer = document.querySelector('.table-container');
+
+
+    // Erstelle einen Button-Container für die Buttons
+    const buttonContainer = document.createElement('div');
+    buttonContainer.classList.add('button-container');
+
+    // Erzeuge den Add Button
     const addButton = document.createElement('button');
     addButton.textContent = "Add";
     addButton.classList.add('add-button');
@@ -7,8 +14,21 @@ document.addEventListener('DOMContentLoaded', () => {
         // Hier wird der aktuelle Table als Parameter in der URL übergeben.
         window.location.href = "http://127.0.0.1:5501/frontend/edit/edit.html?table=employee";
     });
+
+    // Back-Button
+    const backButton = document.createElement('button');
+    backButton.textContent = "Back to Landing Page";
+    backButton.classList.add('back-button');
+    backButton.addEventListener('click', () => {
+        window.location.href = "http://127.0.0.1:5501/frontend/landingpage/landingpage.html"; 
+    });
+
+    // Buttons zum Container hinzufügen
+    buttonContainer.appendChild(addButton);
+    buttonContainer.appendChild(backButton);
+
     // Füge den Add Button oberhalb der Tabelle ein.
-    pageContainer.insertBefore(addButton, pageContainer.firstChild);
+    pageContainer.insertBefore(buttonContainer, pageContainer.firstChild);
 
     fetchEmployeeList();
 });
