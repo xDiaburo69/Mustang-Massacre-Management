@@ -4,30 +4,28 @@ document.addEventListener('DOMContentLoaded', () => {
     const buttonContainer = document.createElement('div');
     buttonContainer.classList.add('button-container');
 
-    //Add Button wird erzeugt
+    // Add Button erzeugen
     const addButton = document.createElement('button');
     addButton.textContent = "Add";
     addButton.classList.add('add-button');
     addButton.addEventListener('click', () => {
-        // Hier wird der aktuelle Table als Parameter in der URL übergeben.
+        // Übergibt den aktuellen Table als Parameter in der URL.
         window.location.href = "http://127.0.0.1:5501/frontend/edit/edit.html?table=horses";
     });
 
-
-
-    // Back-Button wird erzeugt
+    // Back-Button erzeugen
     const backButton = document.createElement('button');
     backButton.textContent = "Back to Landing Page";
     backButton.classList.add('back-button');
     backButton.addEventListener('click', () => {
         window.location.href = "http://127.0.0.1:5501/frontend/landingpage/landingpage.html"; 
-    });    
+    });
 
     // Buttons zum Container hinzufügen
     buttonContainer.appendChild(addButton);
     buttonContainer.appendChild(backButton);
 
-    // Füge den Add Button oberhalb der Tabelle ein.
+    // Füge den Button-Container oberhalb der Tabelle ein.
     pageContainer.insertBefore(buttonContainer, pageContainer.firstChild);
 
     fetchHorseList();
@@ -51,12 +49,13 @@ function fetchHorseList() {
     })
     .then(response => response.json())
     .then(data => {
-        renderTable(data);
+        renderTable(data);  // data sollte hier ein Array von horses sein
     })
     .catch(error => console.error("Error loading the horses:", error));
 }
 
 function renderTable(horses) {
+    const accessToken = localStorage.getItem("access"); // Token hier abrufen
     let horsesTable = document.getElementById("table-body");
     horsesTable.innerHTML = "";
 
@@ -71,12 +70,12 @@ function renderTable(horses) {
             <td>${horse.is_alive ? "sausage soon" : "yummy sausage"}</td>
         `;
 
+        // Edit-Button
         const editButtonCell = document.createElement('td');
         const editButton = document.createElement('button');
-        editButton.textContent = 'Edit'; /* gibt dem button einen text*/
-        editButton.classList.add('edit-button');/* gibt dem button eine klasse und fügt den button ein*/
-        editButton.style.backgroundColor = 'rgb(185, 94, 32)'; /* gibt den button eine andere farbe*/
-
+        editButton.textContent = 'Edit';
+        editButton.classList.add('edit-button');
+        editButton.style.backgroundColor = 'rgb(185, 94, 32)';
         editButton.addEventListener('click', () => {
             const horseData = {
                 id: horse.id,
@@ -87,14 +86,14 @@ function renderTable(horses) {
                 price: horse.price,
                 is_alive: horse.is_alive,
             };
-            
+
             localStorage.setItem('editHorse', JSON.stringify(horseData));
             window.location.href = `http://127.0.0.1:5501/frontend/edit/edit.html?table=horses&id=${horse.id}`;
         });
-
         editButtonCell.appendChild(editButton);
         row.appendChild(editButtonCell);
 
+        // Delete-Button
         const deleteButtonCell = document.createElement('td');
         const deleteButton = document.createElement('button');
         deleteButton.textContent = 'Delete';
@@ -102,34 +101,20 @@ function renderTable(horses) {
         deleteButton.style.backgroundColor = 'rgb(190, 0, 0)';
 
         deleteButton.addEventListener('click', () => {
-            Swal.fire({
-                title: "Are you sure?",
-                text: `Do you really want to delete ${horse.name}?`,
-                icon: "warning",
-                showCancelButton: true,
-                confirmButtonColor: "#dc3545",
-                cancelButtonColor: "#6c757d",
-                confirmButtonText: "Yes, delete it!"
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    fetch(`http://127.0.0.1:8000/api/horses/${horse.id}`, {
-                        method: "DELETE",
-                        headers: { 
-                            "Authorization": `Bearer ${accessToken}`,
-                            "Content-Type": "application/json"
-                        }
-                    })
-                    .then(response => {
-                        if (!response.ok) throw new Error("Deletion failed");
-        
-                        Swal.fire("Deleted!", "The Horse has been removed.", "success");
-                        fetchEmployeeList(); // Tabelle aktualisieren
-                    })
-                    .catch(error => {
-                        console.error("Error:", error);
-                        Swal.fire("Error", "Delete failed!", "error");
-                    });
+            fetch(`http://127.0.0.1:8000/api/horses/${horse.id}/`, {
+                method: "DELETE",
+                headers: {
+                    "Authorization": `Bearer ${accessToken}`,
                 }
+            })
+            .then(response => {
+                if (!response.ok) throw new Error("Deletion error");
+                    console.log(`Horse with ID ${horse.id} was deleted.`);
+                    renderTable(updatedHorseData);
+            })
+            .catch(error => {
+                console.error("Error:", error);
+                alert("Delete failed!");
             });
         });
 
