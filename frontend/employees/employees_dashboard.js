@@ -101,17 +101,17 @@ function renderTable(employees) {
         deleteButton.style.backgroundColor = 'red';
 
         deleteButton.addEventListener('click', () => {
-            fetch(`http://127.0.0.1:8000/api/employees/${employee.id}`, {
+            fetch(`http://127.0.0.1:8000/api/employees/${employee.id}/`, {
                 method: "DELETE",
-                headers: { 
+                headers: {
                     "Authorization": `Bearer ${accessToken}`,
                 }
             })
             .then(response => {
                 if (!response.ok) throw new Error("Deletion error");
-
                 console.log(`Employee with ID ${employee.id} was deleted.`);
-                renderTable(updatedEmployeeData);
+                // Nach erfolgreicher Löschung die Liste neu laden:
+                fetchEmployeeList();
             })
             .catch(error => {
                 console.error("Error:", error);

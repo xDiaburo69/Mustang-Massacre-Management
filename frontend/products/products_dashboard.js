@@ -61,6 +61,7 @@ function fetchProductsList() {
 
 function renderTable(products) {
     let productsTable = document.getElementById("table-body");
+    const accessToken = localStorage.getItem("access");
     productsTable.innerHTML = "";
 
     products.forEach(product => {
@@ -103,19 +104,18 @@ function renderTable(products) {
         deleteButton.addEventListener('click', () => {
             fetch(`http://127.0.0.1:8000/api/products/${product.id}/`, {
                 method: "DELETE",
-                headers: { 
+                headers: {
                     "Authorization": `Bearer ${accessToken}`,
                 }
             })
             .then(response => {
-                if (!response.ok) throw new Error(`Deletion error: ${response.status} ${response.statusText}`);
-                    console.log(`Products with ID ${product.id} was deleted.`);
-                    return response.text();
+                if (!response.ok) throw new Error("Deletion error");
+                console.log(`Product with ID ${product.id} was deleted.`);
+                fetchProductsList();
             })
-            .then(() => fetchProductsList())
             .catch(error => {
                 console.error("Error:", error);
-                alert(`Delete failed! Error: ${error.message}`);
+                alert("Delete failed!");
             });
         });
 
