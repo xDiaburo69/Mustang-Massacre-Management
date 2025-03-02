@@ -6,6 +6,9 @@ body {
     height: 100vh;
     margin: 0;
     transition: background 0.5s ease-in-out;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
   }
   
   .edit-container {
@@ -96,3 +99,89 @@ body {
     opacity: 0.9;
   }
   
+  /* Media Queries */
+/* Bis 1024px (kleinere Desktops / große Tablets) */
+@media screen and (max-width: 1024px) {
+  .edit-container {
+    padding: 15px;
+  }
+  
+  #formContainer {
+    gap: 15px;
+  }
+  
+  .form-group {
+    padding: 10px;
+  }
+  
+  #saveBtn {
+    padding: 8px 16px;
+    font-size: 14px;
+  }
+}
+
+/* Bis 768px (Tablets / kleine Laptops) */
+@media screen and (max-width: 768px) {
+  .edit-container {
+    padding: 10px;
+    width: 95%;
+  }
+  
+  #formContainer {
+    gap: 10px;
+  }
+  
+  .form-group {
+    padding: 8px;
+  }
+  
+  #saveBtn {
+    padding: 8px 14px;
+    font-size: 13px;
+  }
+}
+
+/* Bis 480px (kleine Tablets & große Smartphones) */
+@media screen and (max-width: 480px) {
+  body {
+    
+    padding: 10px;
+  }
+  
+  .edit-container {
+    padding: 8px;
+    width: 100%;
+  }
+  
+  #formContainer {
+    flex-direction: column;  /* Elemente untereinander anordnen */
+    gap: 8px;
+  }
+  
+  .form-group {
+    padding: 5px;
+    width: 100%;
+  }
+  
+  #saveBtn {
+    padding: 6px 12px;
+    font-size: 12px;
+  }
+}
+
+/* Bis 320px (sehr kleine Smartphones) */
+@media screen and (max-width: 320px) {
+  .edit-container {
+    padding: 5px;
+    width: 100%;
+  }
+  
+  .form-group {
+    padding: 4px;
+  }
+  
+  #saveBtn {
+    padding: 5px 10px;
+    font-size: 11px;
+  }
+}

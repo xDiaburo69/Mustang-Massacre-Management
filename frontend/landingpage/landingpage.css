@@ -18,6 +18,7 @@ body {
     background-image: url('../../src/images/horse-3258001_1280.jpg');
     background-size: cover;
     background-repeat: no-repeat;
+    background-position: center; /* Hier wird das Bild zentriert */
     z-index: -1;
 }
 
@@ -36,32 +37,7 @@ header {
     justify-content: center; /* Verteilt den Inhalt */
     width: 100%; /* Header Inhalt soll die volle Breite haben */
 }
-/*
-.login-container {
-    display: flex;
-    align-items: center;
-    padding-left: 1rem; /* Abstand vom linken Rand 
-}
 
-.login-container input,
-.login-container button {
-    margin-right: 10px;
-    padding: 8px 12px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
-.login-container button {
-    background-color: #1c3d1d; /* Grüne Farbe für den Button 
-    color: white;
-    border: none;
-    cursor: pointer;
-}
-
-.login-container button:hover {
-    background-color: #5b86aa;
-}
-*/
 
 
 main {
@@ -122,4 +98,95 @@ main {
 
 .link-container-3 .link-item span {
     color: rgb(187, 148, 41);
+}
+
+
+/* Media Queries */
+
+
+/* Für Tablets (max. 1024px) */
+@media screen and (max-width: 1024px) {
+    .link-container-1,
+    .link-container-2,
+    .link-container-3 {
+        gap: 80px; /* Abstand zwischen den Elementen anpassen */
+        margin-bottom: 60px;
+    }
+
+    .link-item img {
+        width: 200px; /* Bildgröße anpassen */
+        height: 200px;
+        margin-bottom: 20px;
+
+    }
+
+    .link-container-1 .link-item span {
+        font-size: 36px; /* Schriftgröße anpassen */
+        color: rgb(253, 251, 250);
+    }
+}
+
+/* Für Bildschirme bis 768px (Tablets & kleinere Laptops) */
+@media screen and (max-width: 768px) {
+    .link-container-1,
+    .link-container-2,
+    .link-container-3 {
+        flex-direction: column; /* Elemente untereinander anordnen */
+        gap: 20px;            /* Abstand anpassen */
+        margin-bottom: -70px;
+    }
+
+    .link-item img {
+        width: 180px;
+        height: 180px;
+        margin-bottom: 20px;
+    }
+
+    .link-container-1 .link-item span {
+        font-size: 32px;
+    }
+}
+
+/* Für Bildschirme bis 480px (kleine Smartphones) */
+@media screen and (max-width: 480px) {
+    .link-container-1,
+    .link-container-2,
+    .link-container-3 {
+        flex-direction: column;
+        gap: 70px;
+        margin-bottom: -120px;
+    }
+
+    .link-item img {
+        width: 150px;
+        height: 150px;
+        margin-bottom: 0px;
+    }
+
+    .link-container-1 .link-item span {
+        font-size: 28px;
+        margin-top: 5px;
+    }
+}
+
+/* Für sehr kleine Geräte bis 320px (z.B. iPhone SE, ältere Handys) */
+@media screen and (max-width: 320px) {
+    .link-container-1,
+    .link-container-2,
+    .link-container-3 {
+        flex-direction: column;
+        gap: 10px;
+        margin-bottom: -20px;
+    }
+
+    .link-item img {
+        width: 120px;
+        height: 120px;
+        margin-bottom: 10px;
+    }
+
+    .link-container-1 .link-item span {
+        font-size: 24px;
+        color: rgb(83, 214, 105);
+    }
 }

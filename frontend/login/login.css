@@ -8,6 +8,7 @@ body {
     margin: 0;
     background-repeat: no-repeat;
     background-size: cover;
+    background-position: center;
 }
 
 
@@ -141,3 +142,106 @@ body {
     transform: scale(1.05);
     box-shadow: 0 0 15px rgba(42, 3, 59, 0.7);
   }
+
+/* Bis 1024px (Tablets, kleinere Laptops) */
+@media screen and (max-width: 1024px) {
+
+  .container {
+    padding: 20px;
+}
+
+  .container h1 {
+      font-size: 3.5rem;
+  }
+  
+  .login-form {
+      padding: 25px;
+      width: 90%;
+  }
+  
+  .input-group label,
+  .input-group input {
+      font-size: 0.95rem;
+  }
+  
+  .login-form button {
+      font-size: 1.1rem;
+  }
+}
+
+/* Bis 768px (größere Tablets, kleine Laptops) */
+@media screen and (max-width: 768px) {
+
+
+
+  .container {
+      padding: 20px;
+  }
+  
+  .container h1 {
+      font-size: 3rem;
+  }
+  
+  .login-form {
+      padding: 25px;
+      width: 95%;
+  }
+  
+  .input-group label,
+  .input-group input {
+      font-size: 0.9rem;
+  }
+  
+  .login-form button {
+      font-size: 1rem;
+  }
+}
+
+/* Bis 480px (kleine Tablets & große Smartphones) */
+@media screen and (max-width: 480px) {
+  .container {
+      padding: 30px;
+  }
+  
+  .container h1 {
+      font-size: 2.5rem;
+      text-align: center;
+  }
+  
+  .login-form {
+      padding: 20px;
+      width: 100%;
+      margin: 0 10px;
+  }
+  
+  .input-group label,
+  .input-group input {
+      font-size: 0.85rem;
+  }
+  
+  .login-form button {
+      font-size: 0.9rem;
+  }
+}
+
+/* Bis 320px (sehr kleine Smartphones) */
+@media screen and (max-width: 320px) {
+  .container h1 {
+      font-size: 2rem;
+  }
+  
+  .login-form {
+      padding: 15px;
+      width: 100%;
+      margin: 0 5px;
+  }
+  
+  .input-group label,
+  .input-group input {
+      font-size: 0.8rem;
+  }
+  
+  .login-form button {
+      font-size: 0.85rem;
+  }
+}
