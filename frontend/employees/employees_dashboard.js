@@ -109,9 +109,10 @@ function renderTable(employees) {
                 confirmButtonColor: "#dc3545",
                 cancelButtonColor: "#6c757d",
                 confirmButtonText: "Yes, delete it!"
-            }).then((result) => {
+            })
+            .then((result) => {
                 if (result.isConfirmed) {
-                    fetch(`http://127.0.0.1:8000/api/employees/${employee.id}`, {
+                    fetch(`http://127.0.0.1:8000/api/employees/${employee.id}/`, {
                         method: "DELETE",
                         headers: { 
                             "Authorization": `Bearer ${accessToken}`,
@@ -122,7 +123,7 @@ function renderTable(employees) {
                         if (!response.ok) throw new Error("Deletion failed");
         
                         Swal.fire("Deleted!", "The employee has been removed.", "success");
-                        fetchEmployeeList(); // Tabelle aktualisieren
+                        fetchEmployeeList();
                     })
                     .catch(error => {
                         console.error("Error:", error);

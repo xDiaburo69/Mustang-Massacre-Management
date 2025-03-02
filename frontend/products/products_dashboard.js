@@ -110,9 +110,10 @@ function renderTable(products) {
                 confirmButtonColor: "#dc3545",
                 cancelButtonColor: "#6c757d",
                 confirmButtonText: "Yes, delete it!"
-            }).then((result) => {
+            })
+            .then((result) => {
                 if (result.isConfirmed) {
-                    fetch(`http://127.0.0.1:8000/api/products/${product.id}`, {
+                    fetch(`http://127.0.0.1:8000/api/products/${product.id}/`, {
                         method: "DELETE",
                         headers: { 
                             "Authorization": `Bearer ${accessToken}`,
@@ -123,7 +124,7 @@ function renderTable(products) {
                         if (!response.ok) throw new Error("Deletion failed");
         
                         Swal.fire("Deleted!", "The product has been removed.", "success");
-                        fetchEmployeeList(); // Tabelle aktualisieren
+                        fetchProductsList();
                     })
                     .catch(error => {
                         console.error("Error:", error);
