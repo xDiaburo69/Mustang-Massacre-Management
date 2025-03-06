@@ -21,6 +21,21 @@ body {
     transition: background 0.5s ease-in-out;
   }
   
+  .form-group {
+    display: flex;
+    align-items: center; /* Zentriert die Elemente vertikal */
+    margin-bottom: 10px; /* Abstand zwischen den Gruppen */
+  }
+  
+  .form-group label {
+    margin-right: 10px; /* Abstand zwischen Label und Input */
+  }
+  
+  .form-group input[type="file"] {
+    margin-left: 10px; /* Abstand zwischen Label und File Input */
+  }
+
+
   #formContainer {
     display: flex;
     flex-wrap: wrap;

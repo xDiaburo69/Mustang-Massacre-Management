@@ -4,7 +4,7 @@ from .models import Horses, Employees, Products
 class HorsesSerializer(serializers.ModelSerializer):
     class Meta:
         model = Horses
-        fields = ['id', 'name', 'age', 'breed', 'color', 'price', 'is_alive']
+        fields = ['id', 'name', 'age', 'breed', 'color', 'price', 'is_alive','photo']
 
 class EmployeeSerializer(serializers.ModelSerializer):
     class Meta:

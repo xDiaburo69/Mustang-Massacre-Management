@@ -49,6 +49,8 @@ h1 {
     width: 80%; /* Angepasstes Margin */
 }
 
+
+
 table {
     border-radius: 10px;
     width: 90%;
@@ -84,7 +86,14 @@ tbody tr:nth-child(even) {
     color: #5a3d08;
 }
 
-
+/* Anpassung für die Foto-Spalte */
+td img {
+    max-width: 80px; /* Begrenzt die Bildbreite */
+    max-height: 80px; /* Begrenzt die Bildhöhe */
+    height: auto;
+    display: block; /* Verhindert unerwünschte Abstände unter dem Bild */
+    margin: 0 auto; /* Zentriert das Bild horizontal */
+}
 
 
 /* Für Tablets (max. 1024px) */

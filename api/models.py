@@ -9,6 +9,7 @@ class Horses(models.Model):
     color = models.CharField(max_length=50)
     price = models.FloatField()
     is_alive = models.BooleanField()
+    photo = models.ImageField(upload_to='horses_photos/')
 
     def __str__(self):
         return self.name

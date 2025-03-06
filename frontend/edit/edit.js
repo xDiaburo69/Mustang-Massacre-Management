@@ -39,6 +39,7 @@ document.addEventListener('DOMContentLoaded', function() {
         { label: "Color", type: "text", name: "color" },
         { label: "Price", type: "number", name: "price" },
         { label: "Is Alive", type: "checkbox", name: "is_alive" }
+
       ],
       endpoint: "http://127.0.0.1:8000/api/horses/"
     }
@@ -132,6 +133,11 @@ document.addEventListener('DOMContentLoaded', function() {
         data[field.name] = element.value;
       }
     });
+
+    const photoInput = document.getElementById("photo");
+    if (photoInput && photoInput.files.length > 0) {
+      data.append("photo", photoInput.files[0]);
+    }
 
     // Verwende PUT im Bearbeitungsmodus, POST zum Hinzufügen
     const method = isEditMode ? "PUT" : "POST";
