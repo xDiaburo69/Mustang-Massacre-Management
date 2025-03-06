@@ -82,7 +82,7 @@ function renderTable(products) {
         editButton.addEventListener('click', () => {
             const productData = {
                 id: product.id,
-                image: product.image,
+                image_url: product.image_url,
                 name: product.name,
                 price: product.price,
                 sort: product.sort,

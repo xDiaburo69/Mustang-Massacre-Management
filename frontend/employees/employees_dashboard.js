@@ -80,7 +80,7 @@ function renderTable(employees) {
         editButton.addEventListener('click', () => {
             const employeeData = {
                 id: employee.id,
-                image: product.image,
+                image_url: employee.image_url,
                 first_name: employee.first_name,
                 last_name: employee.last_name,
                 age: employee.age,

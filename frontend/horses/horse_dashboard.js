@@ -80,7 +80,7 @@ function renderTable(horses) {
         editButton.addEventListener('click', () => {
             const horseData = {
                 id: horse.id,
-                image: product.image,
+                image_url: horse.image_url,
                 name: horse.name,
                 age: horse.age,
                 breed: horse.breed,
