@@ -68,6 +68,7 @@ function renderTable(products) {
         let row = document.createElement("tr");
         row.innerHTML = `
             <td>${product.id}</td>
+            <td>${product.image}</td>
             <td>${product.name}</td>
             <td>${product.price}</td>
             <td>${product.sort}</td>
@@ -82,6 +83,7 @@ function renderTable(products) {
         editButton.addEventListener('click', () => {
             const productData = {
                 id: product.id,
+                image: product.image,
                 name: product.name,
                 price: product.price,
                 sort: product.sort,
