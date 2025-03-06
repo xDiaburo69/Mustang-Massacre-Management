@@ -88,8 +88,8 @@ tbody tr:nth-child(even) {
 
 /* Anpassung für die Foto-Spalte */
 td img {
-    max-width: 80px; /* Begrenzt die Bildbreite */
-    max-height: 80px; /* Begrenzt die Bildhöhe */
+    max-width: 120px; /* Begrenzt die Bildbreite */
+    max-height: 120px; /* Begrenzt die Bildhöhe */
     height: auto;
     display: block; /* Verhindert unerwünschte Abstände unter dem Bild */
     margin: 0 auto; /* Zentriert das Bild horizontal */

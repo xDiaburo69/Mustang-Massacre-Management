@@ -85,6 +85,13 @@ tbody tr:nth-child(even) {
     color: #eee7df;
 }
 
+td img {
+    max-width: 120px; /* Begrenzt die Bildbreite */
+    max-height: 120px; /* Begrenzt die Bildhöhe */
+    height: auto;
+    display: block; /* Verhindert unerwünschte Abstände unter dem Bild */
+    margin: 0 auto; /* Zentriert das Bild horizontal */
+}
 
 /* Für Tablets (max. 1024px) */
 @media screen and (max-width: 1024px) {
