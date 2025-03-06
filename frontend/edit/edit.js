@@ -123,6 +123,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Beim Klick auf "Speichern" werden die Daten an das Backend gesendet
   document.getElementById('saveBtn').addEventListener('click', function(e) {
+    e.preventDefault();
     const formData = new FormData(); // alle felder werden in formData gespeichert und an das Backend gesendet
     const data = {};
     formConfig.fields.forEach(field => {
@@ -137,7 +138,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Foto hochladen
     const photoInput = document.getElementById("photo");
     if (photoInput && photoInput.files.length > 0) {
-      formData.append("photo", photoInput.files[0]);
+      formData.append("image", photoInput.files[0]);
     }
 
     // Verwende PUT im Bearbeitungsmodus, POST zum Hinzufügen
@@ -146,6 +147,10 @@ document.addEventListener('DOMContentLoaded', function() {
     if (isEditMode) {
       endpoint += id + "/";
     }
+
+    for (const key in data) {
+      formData.append(key, data[key]);
+    }    
 
     fetch(endpoint, {
         method: method,
