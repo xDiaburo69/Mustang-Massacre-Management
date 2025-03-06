@@ -65,6 +65,7 @@ function renderTable(employees) {
     employees.forEach(employee => {
         let row = document.createElement("tr");
         row.innerHTML = `
+            <td>${employee.image}</td>
             <td>${employee.first_name}</td>
             <td>${employee.last_name}</td>
             <td>${employee.age}</td>
@@ -80,6 +81,7 @@ function renderTable(employees) {
         editButton.addEventListener('click', () => {
             const employeeData = {
                 id: employee.id,
+                image: product.image,
                 first_name: employee.first_name,
                 last_name: employee.last_name,
                 age: employee.age,

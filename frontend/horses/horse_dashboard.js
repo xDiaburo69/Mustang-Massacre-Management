@@ -62,6 +62,7 @@ function renderTable(horses) {
     horses.forEach(horse => {
         let row = document.createElement("tr");
         row.innerHTML = `
+            <td>${horse.image}</td>
             <td>${horse.name}</td>
             <td>${horse.age}</td>
             <td>${horse.breed}</td>
@@ -79,6 +80,7 @@ function renderTable(horses) {
         editButton.addEventListener('click', () => {
             const horseData = {
                 id: horse.id,
+                image: product.image,
                 name: horse.name,
                 age: horse.age,
                 breed: horse.breed,

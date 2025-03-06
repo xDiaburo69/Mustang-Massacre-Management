@@ -3,6 +3,7 @@ from django.db import models
 
 class Horses(models.Model):
     id = models.AutoField(primary_key=True)
+    image = models.ImageField(upload_to='horses/', null=True, blank=True)
     name = models.CharField(max_length=50)
     age = models.IntegerField()
     breed = models.CharField(max_length=50)
@@ -16,6 +17,7 @@ class Horses(models.Model):
     
 class Employees(models.Model):
     id = models.AutoField(primary_key=True)
+    image = models.ImageField(upload_to='employees/', null=True, blank=True)
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
     age = models.IntegerField()
@@ -27,6 +29,7 @@ class Employees(models.Model):
 
 class Products(models.Model):
     id = models.AutoField(primary_key=True)
+    image = models.ImageField(upload_to='products/', null=True, blank=True)
     name = models.CharField(max_length=50)
     price = models.FloatField()
     sort = models.CharField(max_length=50)
