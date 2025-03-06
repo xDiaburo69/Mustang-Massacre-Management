@@ -123,7 +123,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Beim Klick auf "Speichern" werden die Daten an das Backend gesendet
   document.getElementById('saveBtn').addEventListener('click', function(e) {
-    e.preventDefault();
     const formData = new FormData(); // alle felder werden in formData gespeichert und an das Backend gesendet
     const data = {};
     formConfig.fields.forEach(field => {
