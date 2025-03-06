@@ -166,7 +166,7 @@ document.addEventListener('DOMContentLoaded', function() {
         console.log("Saved data:", savedData);
         // Leite zum Referrer weiter, falls vorhanden, ansonsten auf das entsprechende Dashboard
         if (document.referrer) {
-          window.location.href = document.referrer;
+          window.history.back();
         } else {
           const dashboardMapping = {
             horses: "/frontend/horses/horse_dashboard.html",
