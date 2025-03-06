@@ -34,7 +34,6 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function fetchEmployeeList() {
-    console.log('hello');
     const accessToken = localStorage.getItem("access");
 
     if (!accessToken) {

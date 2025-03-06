@@ -36,7 +36,6 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function fetchProductsList() {
-    console.log("test");
     const accessToken = localStorage.getItem("access");
 
     if (!accessToken) {
