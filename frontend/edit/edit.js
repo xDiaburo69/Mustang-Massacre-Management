@@ -133,7 +133,7 @@ document.addEventListener('DOMContentLoaded', function() {
         data[field.name] = element.value;
       }
     });
-
+    // Foto hochladen
     const photoInput = document.getElementById("photo");
     if (photoInput && photoInput.files.length > 0) {
       data.append("photo", photoInput.files[0]);
