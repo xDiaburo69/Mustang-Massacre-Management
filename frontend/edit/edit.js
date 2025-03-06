@@ -123,7 +123,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Beim Klick auf "Speichern" werden die Daten an das Backend gesendet
   document.getElementById('saveBtn').addEventListener('click', function(e) {
-    e.preventDefault();
+
     const data = {};
     formConfig.fields.forEach(field => {
       const element = document.getElementById(field.name);
@@ -133,6 +133,7 @@ document.addEventListener('DOMContentLoaded', function() {
         data[field.name] = element.value;
       }
     });
+
     // Foto hochladen
     const photoInput = document.getElementById("photo");
     if (photoInput && photoInput.files.length > 0) {
