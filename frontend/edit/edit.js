@@ -123,7 +123,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Beim Klick auf "Speichern" werden die Daten an das Backend gesendet
   document.getElementById('saveBtn').addEventListener('click', function(e) {
-    e.preventDefault();
+    const formData = new FormData(); // alle felder werden in formData gespeichert und an das Backend gesendet
     const data = {};
     formConfig.fields.forEach(field => {
       const element = document.getElementById(field.name);
@@ -149,10 +149,9 @@ document.addEventListener('DOMContentLoaded', function() {
     fetch(endpoint, {
         method: method,
         headers: {
-          "Content-Type": "application/json",
           "Authorization": `Bearer ${accessToken}`
         },
-        body: JSON.stringify(data)
+        body: formData,
       })
       .then(response => {
         if (!response.ok) throw new Error("Error saving data");
