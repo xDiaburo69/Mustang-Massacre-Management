@@ -10,9 +10,10 @@
     <div class="background"></div>
     <header>
         <div class="header-content">
-          
-            
             <h2>Good day, legend of the Wild West, Mister Mustang!</h2>
+        </div>
+        <div class="logout-container">
+            <button class="logout_form" onclick="logout()">Logout</button>
         </div>
     </header>
 
@@ -36,5 +37,10 @@
             </div>
         </div>
     </main>
+    <script>
+    function logout(){
+        window.location.href = "../login/login.html";
+    }
+    </script>
 </body>
 </html>

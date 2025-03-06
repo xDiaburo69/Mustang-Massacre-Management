@@ -1,5 +1,6 @@
+
 body {
-    font-family:'Courier New', Courier, monospace;
+    font-family: 'Courier New', Courier, monospace;
     margin: 0;
     padding: 0;
     display: flex;
@@ -18,27 +19,46 @@ body {
     background-image: url('../../src/images/horse-3258001_1280.jpg');
     background-size: cover;
     background-repeat: no-repeat;
-    background-position: center; /* Hier wird das Bild zentriert */
+    background-position: center;
     z-index: -1;
 }
 
 header {
     background-color: rgba(218, 168, 122, 0.4);
-    padding: 1rem; /* Padding reduziert, um den Inhalt besser zu platzieren */
+    padding: 1rem;
     width: 100%;
     position: relative;
     margin-top: 80px;
     margin-bottom: -80px;
+   
 }
 
 .header-content {
     display: flex;
     align-items: center;
-    justify-content: center; /* Verteilt den Inhalt */
-    width: 100%; /* Header Inhalt soll die volle Breite haben */
+    justify-content: center;
+    
+    width: 100%;
 }
 
+.logout_form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+}
 
+button {
+    width: 100px;
+    height: 30px;
+    font-size: 13px;
+    cursor: pointer;
+    position: absolute;
+    top: 24px; /* Anpassen nach Bedarf */
+    right: 20px; /* Anpassen nach Bedarf */
+    background-color: rgba(116, 60, 14, 0.479);
+    color: rgba(231, 226, 212, 0.87);
+}
 
 main {
     flex-grow: 1;
