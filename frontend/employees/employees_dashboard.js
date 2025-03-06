@@ -65,7 +65,7 @@ function renderTable(employees) {
     employees.forEach(employee => {
         let row = document.createElement("tr");
         row.innerHTML = `
-            <td>${employee.image}</td>
+            <td><img src="${employee.image}" alt="${employee.name}" style="width:100px"></td>
             <td>${employee.first_name}</td>
             <td>${employee.last_name}</td>
             <td>${employee.age}</td>

@@ -68,7 +68,7 @@ function renderTable(products) {
         let row = document.createElement("tr");
         row.innerHTML = `
             <td>${product.id}</td>
-            <td>${product.image}</td>
+            <td><img src="${product.image}" alt="${product.name}" style="width:100px"></td>
             <td>${product.name}</td>
             <td>${product.price}</td>
             <td>${product.sort}</td>

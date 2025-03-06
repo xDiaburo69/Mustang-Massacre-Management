@@ -62,7 +62,7 @@ function renderTable(horses) {
     horses.forEach(horse => {
         let row = document.createElement("tr");
         row.innerHTML = `
-            <td>${horse.image}</td>
+            <td><img src="${horse.image}" alt="${horse.name}" style="width:100px"></td>
             <td>${horse.name}</td>
             <td>${horse.age}</td>
             <td>${horse.breed}</td>
