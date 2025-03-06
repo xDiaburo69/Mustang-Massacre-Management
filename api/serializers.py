@@ -5,6 +5,7 @@ class HorsesSerializer(serializers.ModelSerializer):
     class Meta:
         model = Horses
         fields = ['id', 'image', 'name', 'age', 'breed', 'color', 'price', 'is_alive',]
+        
 
 class EmployeeSerializer(serializers.ModelSerializer):
     class Meta:
